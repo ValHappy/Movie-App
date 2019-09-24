@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, CardContent, makeStyles } from '@material-ui/core'
+import { fade } from '@material-ui/core/styles';
 
 function MovieCard(props) {
 
@@ -49,7 +50,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        background: 'rgba(0,0,0,0.6)',
+        backgroundColor: fade(theme.palette.common.black, 0.7),
         fontSize: 20,
     },
     img: {
@@ -67,11 +68,13 @@ const useStyles = makeStyles(theme => ({
         margin: '0',
     },
     tagline: {
-        color: '#01f066'
+        color: '#01f066',
+        fontStyle: 'italic',
+        fontSize: 15,
     },
     info: {
         margin: 0,
-        fontSize: 15,
+        fontSize: 18,
         color: 'white',
     },
     infogreen: {
