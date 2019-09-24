@@ -44,7 +44,8 @@ function MovieCard(props) {
 
 const useStyles = makeStyles(theme => ({
     container: {
-        width: '50%'
+        width: '50%',
+        margin: 60
     },
     content: {
         display: 'flex',
@@ -54,9 +55,9 @@ const useStyles = makeStyles(theme => ({
         fontSize: 20,
     },
     img: {
-        width: 200,
-        margin: 1,
-
+        width: 300,
+        height: 400,
+        margin: 15,
     },
     contentInfo: {
         margin: 0,
@@ -86,6 +87,7 @@ const useStyles = makeStyles(theme => ({
         color: '#01f066'
     },
     extra: {
+        margin: 0,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
