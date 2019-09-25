@@ -9,10 +9,9 @@ function MovieCard(props) {
     return (
         <Card className={classes.container}>
             <CardContent className={classes.content}>
-                <div>
+                <div className={classes.containerImg}>
                     <img className={classes.img} src="https://www.yaconic.com/wp-content/uploads/2017/11/by3t9e682c6y-683x1024.jpg" alt="" />
                 </div>
-
                 <div className={classes.contentInfo}>
                     <h3 className={classes.title}>Titulo peli</h3>
                     <p className={classes.tagline}> lorem ipsum dolor as</p>
@@ -48,20 +47,37 @@ const useStyles = makeStyles(theme => ({
         margin: 60
     },
     content: {
+        width: '100%',
+        height: '100%',
+        margin: 0,
+        padding: 0,
+        paddingBottom: 0,
+        float: 'left',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: fade(theme.palette.common.black, 0.7),
         fontSize: 20,
+        backgroundColor: fade(theme.palette.common.black, 0.7),
+    },
+    containerImg: {
+        width: '50%',
+        height: '100%',
+        margin: 0,
+        padding: 0,
+        paddingBottom: 0,
+        float: 'left',
     },
     img: {
-        width: 300,
-        height: 400,
-        margin: 15,
+        width: 350,
+        height: 500,
+        margin: 0,
+        padding: 0,
     },
     contentInfo: {
         margin: 0,
         padding: 0,
+        position: 'relative',
+        display: 'block'
     },
     title: {
         color: 'white',

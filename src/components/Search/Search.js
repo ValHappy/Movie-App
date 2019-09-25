@@ -9,7 +9,6 @@ const SERVER = 'https://api.themoviedb.org';
 
 function Search(props) {
     const classes = useStyles();
-
     const [movies, setMovies] = React.useState(null);
 
     const handleInput = (event) => {
@@ -25,6 +24,10 @@ function Search(props) {
         });
     }
 
+    const handleClick = () => {
+        console.log("holi :c soy la lista"); 
+    }
+
     return (
         <div className={classes.container}>
             <div className={classes.search} onKeyPress={handleInput}>
@@ -38,17 +41,15 @@ function Search(props) {
                     }}
                 />
             </div>
-        
-        
-            {/* <div>
-            //Buscardor funcional (?)
+
+            <div>
                 {movies && <ul>
                     {movies.map((elem) => {
-                        return <li key={elem.id}>{elem.title} - {elem.id}</li>
+                        return <li onClick={handleClick} key={elem.id}>{elem.title} - {elem.id}</li>
                         //Usar el ID para traer toda la info de la peli /movie/id
                     })}
                 </ul>}
-            </div> */}
+            </div>
 
         </div>
     );
