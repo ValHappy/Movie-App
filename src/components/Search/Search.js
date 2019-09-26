@@ -3,6 +3,7 @@ import superagent from 'superagent';
 import { makeStyles, InputBase } from '@material-ui/core';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import { fade } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 
 const APIKEY = '2c73b0f220a02912d9c2cd39c09588e2';
 const SERVER = 'https://api.themoviedb.org';
@@ -24,8 +25,8 @@ function Search(props) {
         });
     }
 
-    const handleClick = () => {
-        console.log("holi :c soy la lista"); 
+    const handleClick = (myID) => {
+        props.history.push('/movies/' + myID)
     }
 
     return (
@@ -44,9 +45,8 @@ function Search(props) {
 
             <div>
                 {movies && <ul>
-                    {movies.map((elem) => {
-                        return <li onClick={handleClick} key={elem.id}>{elem.title} - {elem.id}</li>
-                        //Usar el ID para traer toda la info de la peli /movie/id
+                    {movies.splice(0, 5).map((elem) => {
+                        return <li onClick={() => handleClick(elem.id)} key={elem.id}>{elem.title} - {elem.id}</li>
                     })}
                 </ul>}
             </div>
@@ -100,4 +100,4 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default Search;
+export default withRouter(Search);

@@ -1,10 +1,11 @@
 import React from 'react';
 import { makeStyles, CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Home from '../Home/Home';
 import Menu from '../../components/Menu/Menu';
-import Movies from '../Movies/Movies'
 import Search from '../../components/Search/Search';
+import Home from '../Home/Home';
+import Movies from '../Movies/Movies'
+import Favorites from '../Favorites/Favorites';
 
 function App() {
     const classes = useStyles();
@@ -18,12 +19,12 @@ function App() {
                 </div>
             </div>
 
-            <div className={classes.container}>
-                <Route path="/" exact component={Home} />
-                <Route path="/movie" component={Movies} />
+            <Route path="/" exact component={Home} />
+            <Route path="/movies" component={Movies} />
+            <Route path="/favorites" component={Favorites} />
 
-                <CssBaseline />
-            </div>
+            <CssBaseline />
+
         </Router>
     );
 }
@@ -34,17 +35,13 @@ const useStyles = makeStyles(theme => ({
         height: '100%',
         display: 'flex',
         alignItems: 'center',
+        zIndex: '0'
     },
     searchContainer: {
-        marginLeft: '40%'
+        marginLeft: '40%',
     },
-    container: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-    },
+    search: {
+    }
 }));
 
 export default App;
