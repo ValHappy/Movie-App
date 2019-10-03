@@ -20,7 +20,7 @@ function App() {
             </div>
 
             <Route path="/" exact component={Home} />
-            <Route path="/movies" component={Movies} />
+            <Route path="/movies/:id" component={Movies} />
             <Route path="/favorites" component={Favorites} />
 
             <CssBaseline />

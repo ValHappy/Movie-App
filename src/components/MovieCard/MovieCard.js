@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, makeStyles } from '@material-ui/core'
 import { fade } from '@material-ui/core/styles';
+import transformInfo from '../../utils/transformInfo';
 
 function MovieCard(props) {
-
     const classes = useStyles();
+    const [movie, setMovie] = useState({});
+
+    useEffect(() => {
+        var promise = fetch(`https://api.themoviedb.org/3/movie/${props.id}?api_key=2c73b0f220a02912d9c2cd39c09588e2`);
+        promise.then((info) => info.json()).then((response) => {
+            setMovie(transformInfo(response));
+        });
+    }, [props.id])
 
     return (
         <Card className={classes.container}>
@@ -13,9 +21,9 @@ function MovieCard(props) {
                     <img className={classes.img} src="https://www.yaconic.com/wp-content/uploads/2017/11/by3t9e682c6y-683x1024.jpg" alt="" />
                 </div>
                 <div className={classes.contentInfo}>
-                    <h3 className={classes.title}>Titulo peli</h3>
+                    <h3 className={classes.title}>{movie.title}</h3>
                     <p className={classes.tagline}> lorem ipsum dolor as</p>
-                    <p className={classes.info}>aqui va a ir un parrafo de texto muy largo</p>
+                    <p className={classes.info}>{movie.info}</p>
                     <p className={classes.category}>generos</p>
                     <p className={classes.info}> productores</p>
                     <section className={classes.extra}>
@@ -31,7 +39,7 @@ function MovieCard(props) {
                             <p className={classes.infogreen}>contenido de etiqueta</p>
 
                             <p className={classes.info}>Vote Average:</p>
-                            <p className={classes.infogreen}>contenido de etiqueta</p>
+                            <p className={classes.infogreen}>{movie.voteAverage}</p>
                         </div>
                     </section>
                 </div>
