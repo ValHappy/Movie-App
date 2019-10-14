@@ -1,27 +1,37 @@
 import React from 'react';
 import { Card, CardContent, makeStyles, Fab } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import { withRouter } from 'react-router-dom';
 
 function MovieLine(props) {
     const classes = useStyles();
+
+    function handleClick() {
+        props.history.push('/movies/' + props.id);
+    }
 
     return (
         <Card>
             <CardContent className={classes.content}>
                 <div className={classes.up}>
                     <div className={classes.up2}>
-                        <h3 className={classes.title}>Titulo movie</h3>
-                        <p className={classes.desc}> 6.8 </p>
+                        <h3 className={classes.title}>{props.title}</h3>
+                        <p className={classes.desc}> {props.voteAverage} </p>
                     </div>
-                    <Fab size="small" color="primary" aria-label="add" className={classes.btn}> <AddIcon /> </Fab>
+                    <Fab size="small" color="primary" aria-label="add" className={classes.btn} onClick={handleClick}> <AddIcon /> </Fab>
                 </div>
-                <p className={classes.desc}>Lorem ipsum dolor sit amet consectetur adipiscing elit, imperdiet leo quisque consequat urna tempor ornare nascetur</p>
+                <p className={classes.desc}>{props.info.length > 80 ? props.info.substring(0, 80) + "..." : props.info}</p>
             </CardContent>
         </Card>
+
     );
 }
 
 const useStyles = makeStyles(theme => ({
+    container: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
     content: {
         display: 'flex',
         flexDirection: 'column',
@@ -34,7 +44,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         alignItems: 'center',
     },
-    up2:{
+    up2: {
         margin: 0,
         padding: 0,
 
@@ -56,4 +66,4 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default MovieLine;
+export default withRouter(MovieLine);

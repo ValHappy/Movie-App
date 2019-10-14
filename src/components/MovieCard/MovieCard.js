@@ -18,25 +18,26 @@ function MovieCard(props) {
         <Card className={classes.container}>
             <CardContent className={classes.content}>
                 <div className={classes.containerImg}>
-                    <img className={classes.img} src="https://www.yaconic.com/wp-content/uploads/2017/11/by3t9e682c6y-683x1024.jpg" alt="" />
+                {console.log(movie.img)}
+                    <img className={classes.img} src={"https://image.tmdb.org/t/p/w500"+(movie.img)} alt="" /> 
                 </div>
                 <div className={classes.contentInfo}>
                     <h3 className={classes.title}>{movie.title}</h3>
-                    <p className={classes.tagline}> lorem ipsum dolor as</p>
+                    <p className={classes.tagline}>{movie.tagline}</p>
                     <p className={classes.info}>{movie.info}</p>
                     <p className={classes.category}>generos</p>
                     <p className={classes.info}> productores</p>
                     <section className={classes.extra}>
                         <div>
                             <p className={classes.info}>Original Release:</p>
-                            <p className={classes.infogreen}>contenido de etiqueta</p>
+                            <p className={classes.infogreen}>{movie.date}</p>
 
                             <p className={classes.info}>Box Office:</p>
-                            <p className={classes.infogreen}>contenido de etiqueta</p>
+                            <p className={classes.infogreen}>{movie.money}</p>
                         </div>
                         <div>
                             <p className={classes.info}>Running Time:</p>
-                            <p className={classes.infogreen}>contenido de etiqueta</p>
+                            <p className={classes.infogreen}>{movie.runtime}</p>
 
                             <p className={classes.info}>Vote Average:</p>
                             <p className={classes.infogreen}>{movie.voteAverage}</p>
@@ -99,7 +100,7 @@ const useStyles = makeStyles(theme => ({
     },
     info: {
         margin: 0,
-        fontSize: 18,
+        fontSize: 15,
         color: 'white',
     },
     infogreen: {
